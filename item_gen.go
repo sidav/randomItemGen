@@ -137,11 +137,13 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 		statsLine += k + " " + valString + ", "
 	}
 
-	for _, pref := range ri.affixes {
-		if pref.lines.selectOnlyOne {
+	startingAffixIndex := rand.Intn(len(ri.affixes))
+	for aliasIndex := range ri.affixes {
+		currAffix := ri.affixes[(aliasIndex + startingAffixIndex) % len(ri.affixes)]
+		if currAffix.lines.selectOnlyOne {
 			prefixNotSuffix := rand.Intn(2) == 0
 			if prefixNotSuffix {
-				prefixes += pref.lines.prefixForItemName + " "
+				prefixes += currAffix.lines.prefixForItemName + " "
 			} else {
 				if suffixes != "" {
 					if rand.Intn(2) == 0 {
@@ -150,13 +152,13 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 						suffixes = suffixes + " "
 					}
 				}
-				suffixes += pref.lines.suffixForItemName
+				suffixes += currAffix.lines.suffixForItemName
 			}
 		} else {
-			if pref.lines.prefixForItemName != "" {
-				prefixes += pref.lines.prefixForItemName + " "
+			if currAffix.lines.prefixForItemName != "" {
+				prefixes += currAffix.lines.prefixForItemName + " "
 			}
-			if pref.lines.suffixForItemName != "" {
+			if currAffix.lines.suffixForItemName != "" {
 				if suffixes != "" {
 					if rand.Intn(2) == 0 {
 						suffixes = suffixes + ", "
@@ -164,10 +166,10 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 						suffixes = suffixes + " "
 					}
 				}
-				suffixes += pref.lines.suffixForItemName
+				suffixes += currAffix.lines.suffixForItemName
 			}
 		}
-		for _, e := range pref.listOfEffects {
+		for _, e := range currAffix.listOfEffects {
 			if e != "" {
 				statsLine += e + ", "
 			}

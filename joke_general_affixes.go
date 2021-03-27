@@ -147,7 +147,7 @@ var (
 		},
 		{
 			lines: &affixLines{
-				suffixForItemName: "то, что доктор прописал",
+				suffixForItemName: " - то, что доктор прописал",
 			},
 		},
 		{
