@@ -95,9 +95,9 @@ func initStubRuleset() {
 				"Damage":   {-3, -2, -1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 5},
 				"Accuracy": {-3, -2, -1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 5},
 			},
-			uniqueNamePrefixes:  []string{"Qu", "Li", "Non-"},
-			uniqueNameSyllables: []string{"kir", "qua", "li"},
-			uniqueNameSuffixes:  []string{"zum", "kem", "ral"},
+			aliasPreSyllables:  []string{"Qu", "Li", "Non-"},
+			aliasSyllables:     []string{"kir", "qua", "li"},
+			aliasPostSyllables: []string{"zum", "kem", "ral"},
 		},
 	}
 }

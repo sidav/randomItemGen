@@ -34,18 +34,18 @@ type rule struct {
 	totalAffixes          int
 	totalUniqueAffixes    int
 
-	uniqueNamePrefixes  []string
-	uniqueNameSyllables []string
-	uniqueNameSuffixes  []string
+	aliasPreSyllables  []string
+	aliasSyllables     []string
+	aliasPostSyllables []string
 
 	modifiersNamesAndPossibleValues map[string][]int
 }
 
 type resultingItem struct {
-	modifiers  map[string]int
-	affixes    []*affix
-	uniqueName string
-	name       string
+	modifiers map[string]int
+	affixes   []*affix
+	alias     string
+	name      string
 }
 
 type itemGenerator struct {
@@ -84,8 +84,8 @@ func (ig *itemGenerator) createItemByRule(r *rule) *resultingItem {
 			}
 		}
 	}
-	if len(r.uniqueNameSyllables) > 0 {
-		ri.generateUniqueName(r)
+	if len(r.aliasSyllables) > 0 {
+		ri.generateAlias(r)
 	}
 	return &ri
 }
@@ -103,7 +103,7 @@ func (ri *resultingItem) hasTheAffix(prefix, suffix string) bool {
 	return false
 }
 
-func (ri *resultingItem) generateUniqueName(r *rule) {
+func (ri *resultingItem) generateAlias(r *rule) {
 	hasPrefix := rand.Intn(2) == 1
 	hasSuffix := rand.Intn(2) == 1
 	syllables := rand.Intn(3) + 1
@@ -111,13 +111,13 @@ func (ri *resultingItem) generateUniqueName(r *rule) {
 		syllables -= 1
 	}
 	for i := 0; i < syllables; i++ {
-		ri.uniqueName += r.uniqueNameSyllables[rand.Intn(len(r.uniqueNameSyllables))]
+		ri.alias += r.aliasSyllables[rand.Intn(len(r.aliasSyllables))]
 	}
 	if hasPrefix {
-		ri.uniqueName = r.uniqueNamePrefixes[rand.Intn(len(r.uniqueNamePrefixes))] + ri.uniqueName
+		ri.alias = r.aliasPreSyllables[rand.Intn(len(r.aliasPreSyllables))] + ri.alias
 	}
 	if hasSuffix {
-		ri.uniqueName += r.uniqueNameSuffixes[rand.Intn(len(r.uniqueNameSuffixes))]
+		ri.alias += r.aliasPostSyllables[rand.Intn(len(r.aliasPostSyllables))]
 	}
 }
 
@@ -144,7 +144,11 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 				prefixes += pref.lines.prefixForItemName + " "
 			} else {
 				if suffixes != "" {
-					suffixes = suffixes + ", "
+					if rand.Intn(2) == 0 {
+						suffixes = suffixes + ", "
+					} else {
+						suffixes = suffixes + " "
+					}
 				}
 				suffixes += pref.lines.suffixForItemName
 			}
@@ -154,7 +158,11 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 			}
 			if pref.lines.suffixForItemName != "" {
 				if suffixes != "" {
-					suffixes = suffixes + ", "
+					if rand.Intn(2) == 0 {
+						suffixes = suffixes + ", "
+					} else {
+						suffixes = suffixes + " "
+					}
 				}
 				suffixes += pref.lines.suffixForItemName
 			}
@@ -165,10 +173,10 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 			}
 		}
 	}
-	if len(ri.uniqueName) == 0 || forceAffixes {
+	if len(ri.alias) == 0 || forceAffixes {
 		name = fmt.Sprintf("%s%s %s", prefixes, name, suffixes)
 	} else {
-		name = fmt.Sprintf("%s \"%s\" ", ri.name, ri.uniqueName)
+		name = fmt.Sprintf("%s \"%s\" ", ri.name, ri.alias)
 	}
 	if statsLine != "" && addStatsLine {
 		name += "{" + statsLine + "}"

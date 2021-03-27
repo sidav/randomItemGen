@@ -166,9 +166,9 @@ func initArmorRuleset() {
 			modifiersNamesAndPossibleValues: map[string][]int{
 				"Защита":   {-3, -2, -1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 5},
 			},
-			uniqueNamePrefixes:  []string{"пре", "пере", "до", "недо", "блево", "броне", "тряп", "брен"},
-			uniqueNameSyllables: []string{"ли", "ка", "ша", "шаш", "зюн", "бав", "брю", "хыыых"},
-			uniqueNameSuffixes:  []string{"алка", "ень", "ый", "-кладенец"},
+			aliasPreSyllables:  []string{"пре", "пере", "до", "недо", "блево", "броне", "тряп", "брен"},
+			aliasSyllables:     []string{"ли", "ка", "ша", "шаш", "зюн", "бав", "брю", "хыыых"},
+			aliasPostSyllables: []string{"алка", "ень", "ый", "-кладенец"},
 		},
 	}
 }
