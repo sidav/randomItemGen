@@ -5,6 +5,12 @@ var (
 		{
 			lines: &affixLines{
 				prefixForItemName: "",
+				suffixForItemName: "без особых примет",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
 				suffixForItemName: "для жирных волос",
 			},
 		},
@@ -124,12 +130,17 @@ var (
 		},
 		{
 			lines: &affixLines{
-				suffixForItemName: "что поджарит тебе аиста",
+				suffixForItemName: "для особых случаев",
 			},
 		},
 		{
 			lines: &affixLines{
-				suffixForItemName: "лично в руки",
+				suffixForItemName: "на кодовом замке",
+			},
+		},
+		{
+			lines: &affixLines{
+				suffixForItemName: "с жидкокристаллическим дисплеем",
 			},
 		},
 		{
@@ -308,7 +319,7 @@ var (
 		{
 			lines: &affixLines{
 				prefixForItemName: "",
-				suffixForItemName: "со списком ругательств про игрока",
+				suffixForItemName: "со списком ругательств в адрес владельца",
 			},
 		},
 		{

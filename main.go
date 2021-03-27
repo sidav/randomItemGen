@@ -26,26 +26,12 @@ func main() {
 	initArmorRuleset()
 	initBookRuleset()
 	initDisposablesRuleset()
-	if len(os.Args) > 1 && os.Args[1] == "i" {
-		createInventory()
+	if len(os.Args) > 1 {
+		createJokeCraracter()
 	} else {
 		justGenerateItems()
 	}
 	fmt.Print()
-}
-
-func createInventory() {
-	fmt.Println("=== ОРУЖИЕ: ===")
-	fmt.Println("- " + gen.createItemByRule(weaponRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("=== ОДЕЖДА: ===")
-	fmt.Println("1: " + gen.createItemByRule(armorRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("2: " + gen.createItemByRule(armorRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("=== ЧТИВО: ===")
-	fmt.Println("1: " + gen.createItemByRule(bookRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("2: " + gen.createItemByRule(bookRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("=== РЕСУРСЫ: ===")
-	fmt.Println("1: " + gen.createItemByRule(disposablesRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
-	fmt.Println("2: " + gen.createItemByRule(disposablesRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
 }
 
 func justGenerateItems() {

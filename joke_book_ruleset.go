@@ -142,6 +142,20 @@ var (
 					selectOnlyOne:     true,
 				},
 			},
+			{
+				lines: &affixLines{
+					prefixForItemName: "подарочная",
+					suffixForItemName: "в подарочной упаковке",
+					selectOnlyOne:     true,
+				},
+			},
+			{
+				lines: &affixLines{
+					prefixForItemName: "рукописная",
+					suffixForItemName: "с автографом автора",
+					selectOnlyOne:     true,
+				},
+			},
 		},
 
 		possibleUniqueAffixes: []affix{

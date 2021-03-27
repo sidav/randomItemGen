@@ -21,6 +21,12 @@ var (
 			},
 			{
 				lines: &affixLines{
+					prefixForItemName: "самый обычный",
+					suffixForItemName: "",
+				},
+			},
+			{
+				lines: &affixLines{
 					prefixForItemName: "пламенный",
 					suffixForItemName: "",
 				},
