@@ -34,7 +34,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "некрономическая",
 					suffixForItemName: "демонического происхождения",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"сводит с ума"},
 			},
@@ -42,7 +42,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "школьная",
 					suffixForItemName: "для младших классов",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"написано с ошибками"},
 			},
@@ -50,7 +50,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "медицинская",
 					suffixForItemName: "с советами по медицине",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"самолечение +1"},
 			},
@@ -58,7 +58,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "иллюстрированная",
 					suffixForItemName: "в комиксах",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"интереснее обычной"},
 			},
@@ -66,7 +66,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "иероглифическая",
 					suffixForItemName: "на китайском",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"может, это японский?.."},
 			},
@@ -74,7 +74,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "испачканная",
 					suffixForItemName: "в грязище",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"местами не разобрать"},
 			},
@@ -82,7 +82,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "библиотечная",
 					suffixForItemName: "украденная из библиотеки",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"вернуть до послезавтра"},
 			},
@@ -90,56 +90,56 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "матерная",
 					suffixForItemName: "с матерными частушками",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "сумасбродная",
 					suffixForItemName: "пациента из психушки",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "безумно интересная",
 					suffixForItemName: "с потрясающим сюжетом",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "детская",
 					suffixForItemName: "для самых маленьких",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "потрёпанная",
 					suffixForItemName: "с вырванными страницами",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "предсказуемая",
 					suffixForItemName: "со спойлерами",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "написанная Брайлем",
 					suffixForItemName: "для слепых",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
 				lines: &affixLines{
 					prefixForItemName: "смешная",
 					suffixForItemName: "в комиксах",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 		},
@@ -237,27 +237,31 @@ var (
 )
 
 func initBookRuleset() {
-	bookRuleset.rules = []*rule {
+	bookRuleset.rules = []*rule{
 		&rule{
 			rarityName:        "Common",
+			ruleWeight:        5,
 			possibleItemNames: &bookRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,
 		},
 		&rule{
 			rarityName:        "Uncommon",
+			ruleWeight:        4,
 			possibleItemNames: &bookRuleset.possibleNames,
 			possibleAffixes:   append(append(bookRuleset.possbleAffixes, generalAffixes...), generalAffixes...),
 			totalAffixes:      1,
 		},
 		&rule{
 			rarityName:        "Rare",
+			ruleWeight:        3,
 			possibleItemNames: &bookRuleset.possibleNames,
 			possibleAffixes:   append(bookRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:      2,
 		},
 		&rule{
 			rarityName:            "Epic",
+			ruleWeight:            2,
 			possibleItemNames:     &bookRuleset.possibleNames,
 			possibleAffixes:       append(bookRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          2,
@@ -266,6 +270,7 @@ func initBookRuleset() {
 		},
 		&rule{
 			rarityName:            "LEGENDARY",
+			ruleWeight:            1,
 			possibleItemNames:     &bookRuleset.possibleNames,
 			possibleAffixes:       append(bookRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          3,
@@ -277,5 +282,3 @@ func initBookRuleset() {
 		},
 	}
 }
-
-

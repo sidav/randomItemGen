@@ -11,7 +11,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "flaming",
 					suffixForItemName: "of flame",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 				listOfEffects: []string{"flame"},
 			},
@@ -41,9 +41,10 @@ var (
 )
 
 func initStubRuleset() {
-	stubRuleset.rules = []*rule {
+	stubRuleset.rules = []*rule{
 		&rule{
 			rarityName:        "Common",
+			ruleWeight:        5,
 			possibleItemNames: &stubRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,
@@ -54,6 +55,7 @@ func initStubRuleset() {
 		},
 		&rule{
 			rarityName:        "Uncommon",
+			ruleWeight:        4,
 			possibleItemNames: &stubRuleset.possibleNames,
 			possibleAffixes:   stubRuleset.possbleAffixes,
 			totalAffixes:      1,
@@ -64,6 +66,7 @@ func initStubRuleset() {
 		},
 		&rule{
 			rarityName:        "Rare",
+			ruleWeight:        3,
 			possibleItemNames: &stubRuleset.possibleNames,
 			possibleAffixes:   stubRuleset.possbleAffixes,
 			totalAffixes:      2,
@@ -74,6 +77,7 @@ func initStubRuleset() {
 		},
 		&rule{
 			rarityName:            "Epic",
+			ruleWeight:            2,
 			possibleItemNames:     &stubRuleset.possibleNames,
 			possibleAffixes:       stubRuleset.possbleAffixes,
 			totalAffixes:          2,
@@ -86,6 +90,7 @@ func initStubRuleset() {
 		},
 		&rule{
 			rarityName:            "LEGENDARY",
+			ruleWeight:            1,
 			possibleItemNames:     &stubRuleset.possibleNames,
 			possibleAffixes:       stubRuleset.possbleAffixes,
 			totalAffixes:          3,
@@ -101,5 +106,3 @@ func initStubRuleset() {
 		},
 	}
 }
-
-

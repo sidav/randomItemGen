@@ -1191,6 +1191,7 @@ func initWeaponRuleset() {
 	weaponRuleset.rules = []*rule {
 			&rule{
 				rarityName:        "Common",
+				ruleWeight: 5,
 				possibleItemNames: &weaponRuleset.possibleNames,
 				possibleAffixes:   nil,
 				totalAffixes:      0,
@@ -1201,6 +1202,7 @@ func initWeaponRuleset() {
 			},
 			&rule{
 				rarityName:        "Uncommon",
+				ruleWeight: 4,
 				possibleItemNames: &weaponRuleset.possibleNames,
 				possibleAffixes:   append(weaponRuleset.possbleAffixes, generalAffixes...),
 				totalAffixes:      1,
@@ -1211,6 +1213,7 @@ func initWeaponRuleset() {
 			},
 			&rule{
 				rarityName:        "Rare",
+				ruleWeight: 3,
 				possibleItemNames: &weaponRuleset.possibleNames,
 				possibleAffixes:   append(weaponRuleset.possbleAffixes, generalAffixes...),
 				totalAffixes:      2,
@@ -1221,6 +1224,7 @@ func initWeaponRuleset() {
 			},
 			&rule{
 				rarityName:            "Epic",
+				ruleWeight: 2,
 				possibleItemNames:     &weaponRuleset.possibleNames,
 				possibleAffixes:       append(append(weaponRuleset.possbleAffixes, generalAffixes...), generalAffixes...),
 				totalAffixes:          2,
@@ -1233,6 +1237,7 @@ func initWeaponRuleset() {
 			},
 			&rule{
 				rarityName:            "LEGENDARY",
+				ruleWeight: 1,
 				possibleItemNames:     &weaponRuleset.possibleNames,
 				possibleAffixes:       append(weaponRuleset.possbleAffixes, generalAffixes...),
 				totalAffixes:          3,

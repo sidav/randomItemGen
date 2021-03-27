@@ -88,7 +88,7 @@ var (
 				lines: &affixLines{
 					prefixForItemName: "съедобные",
 					suffixForItemName: "с кофеином",
-					selectOnlyOne: true,
+					selectOnlyOne:     true,
 				},
 			},
 			{
@@ -391,7 +391,6 @@ var (
 					prefixForItemName: "зашкварные",
 				},
 			},
-
 		},
 
 		possibleUniqueAffixes: []affix{
@@ -432,24 +431,28 @@ func initDisposablesRuleset() {
 	disposablesRuleset.rules = []*rule{
 		&rule{
 			rarityName:        "Common",
+			ruleWeight:        5,
 			possibleItemNames: &disposablesRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,
 		},
 		&rule{
 			rarityName:        "Uncommon",
+			ruleWeight:        5,
 			possibleItemNames: &disposablesRuleset.possibleNames,
 			possibleAffixes:   append(disposablesRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:      1,
 		},
 		&rule{
 			rarityName:        "Rare",
+			ruleWeight:        4,
 			possibleItemNames: &disposablesRuleset.possibleNames,
 			possibleAffixes:   append(disposablesRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:      2,
 		},
 		&rule{
 			rarityName:            "Epic",
+			ruleWeight:            3,
 			possibleItemNames:     &disposablesRuleset.possibleNames,
 			possibleAffixes:       append(append(disposablesRuleset.possbleAffixes, generalAffixes...), generalAffixes...),
 			totalAffixes:          2,
@@ -458,6 +461,7 @@ func initDisposablesRuleset() {
 		},
 		&rule{
 			rarityName:            "LEGENDARY",
+			ruleWeight:            2,
 			possibleItemNames:     &disposablesRuleset.possibleNames,
 			possibleAffixes:       append(disposablesRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          3,
@@ -465,7 +469,8 @@ func initDisposablesRuleset() {
 			totalUniqueAffixes:    2,
 		},
 		&rule{
-			rarityName:            "___ UNIQUE ___",
+			rarityName:            "~ ETERNAL ~",
+			ruleWeight:            1,
 			possibleItemNames:     &disposablesRuleset.possibleNames,
 			possibleAffixes:       append(disposablesRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          4,

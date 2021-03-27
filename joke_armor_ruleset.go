@@ -120,6 +120,7 @@ func initArmorRuleset() {
 	armorRuleset.rules = []*rule {
 		&rule{
 			rarityName:        "Common",
+			ruleWeight: 5,
 			possibleItemNames: &armorRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,
@@ -129,6 +130,7 @@ func initArmorRuleset() {
 		},
 		&rule{
 			rarityName:        "Uncommon",
+			ruleWeight: 4,
 			possibleItemNames: &armorRuleset.possibleNames,
 			possibleAffixes:   append(append(armorRuleset.possbleAffixes, generalAffixes...), generalAffixes...),
 			totalAffixes:      1,
@@ -138,6 +140,7 @@ func initArmorRuleset() {
 		},
 		&rule{
 			rarityName:        "Rare",
+			ruleWeight: 3,
 			possibleItemNames: &armorRuleset.possibleNames,
 			possibleAffixes:   append(armorRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:      2,
@@ -147,6 +150,7 @@ func initArmorRuleset() {
 		},
 		&rule{
 			rarityName:            "Epic",
+			ruleWeight: 2,
 			possibleItemNames:     &armorRuleset.possibleNames,
 			possibleAffixes:       append(armorRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          2,
@@ -158,6 +162,7 @@ func initArmorRuleset() {
 		},
 		&rule{
 			rarityName:            "LEGENDARY",
+			ruleWeight: 1,
 			possibleItemNames:     &armorRuleset.possibleNames,
 			possibleAffixes:       append(armorRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:          3,
