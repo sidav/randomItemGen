@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"os"
 	"strings"
 	"time"
 )
@@ -12,33 +13,55 @@ const (
 )
 
 var (
+	gen itemGenerator
 	prefixesToCreate = ""
 	suffixesToCreate = ""
 )
 
 func main() {
 	createAffixesFromList()
-	gen := itemGenerator{}
+	gen = itemGenerator{}
 	rand.Seed(int64(time.Now().Unix()))
-
 	initWeaponRuleset()
 	initArmorRuleset()
 	initBookRuleset()
 	initDisposablesRuleset()
+	if len(os.Args) > 1 && os.Args[1] == "i" {
+		createInventory()
+	} else {
+		justGenerateItems()
+	}
+	fmt.Print()
+}
+
+func createInventory() {
+	fmt.Println("=== ОРУЖИЕ: ===")
+	fmt.Println("- " + gen.createItemByRule(weaponRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("=== ОДЕЖДА: ===")
+	fmt.Println("1: " + gen.createItemByRule(armorRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("2: " + gen.createItemByRule(armorRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("=== ЧТИВО: ===")
+	fmt.Println("1: " + gen.createItemByRule(bookRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("2: " + gen.createItemByRule(bookRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("=== РЕСУРСЫ: ===")
+	fmt.Println("1: " + gen.createItemByRule(disposablesRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+	fmt.Println("2: " + gen.createItemByRule(disposablesRuleset.getWeightedRandomRule()).getFullName(ADD_STATS_LINE, true, true))
+}
+
+func justGenerateItems() {
 	for i := range weaponRuleset.rules {
 		if i == 0 || i == -4 {
 			continue
 		}
 		fmt.Println("===== " + weaponRuleset.rules[i].rarityName + ": =====")
-		fmt.Println(" - " + gen.createItemByRule(weaponRuleset.rules[i]).getFullName(ADD_STATS_LINE, true))
-		fmt.Println(" - " + gen.createItemByRule(armorRuleset.rules[i]).getFullName(ADD_STATS_LINE, true))
-		fmt.Println(" - " + gen.createItemByRule(bookRuleset.rules[i]).getFullName(ADD_STATS_LINE, true))
+		fmt.Println(" - " + gen.createItemByRule(weaponRuleset.rules[i]).getFullName(ADD_STATS_LINE, true, false))
+		fmt.Println(" - " + gen.createItemByRule(armorRuleset.rules[i]).getFullName(ADD_STATS_LINE, true, false))
+		fmt.Println(" - " + gen.createItemByRule(bookRuleset.rules[i]).getFullName(ADD_STATS_LINE, true, false))
 		for j := 0; j < 1; j++ {
-			fmt.Println(" - " + gen.createItemByRule(disposablesRuleset.rules[i]).getFullName(ADD_STATS_LINE, true))
+			fmt.Println(" - " + gen.createItemByRule(disposablesRuleset.rules[i]).getFullName(ADD_STATS_LINE, true, false))
 		}
 		fmt.Printf("\n")
 	}
-	fmt.Print()
 }
 
 func createAffixesFromList() {

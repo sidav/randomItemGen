@@ -27,7 +27,9 @@ type affix struct {
 }
 
 type rule struct {
-	rarityName            string
+	rarityName string
+	ruleWeight int // the higher, the more probable the rule is to apply
+
 	possibleItemNames     *[]string
 	possibleAffixes       []affix
 	possibleUniqueAffixes []affix
@@ -46,9 +48,29 @@ type resultingItem struct {
 	affixes   []*affix
 	alias     string
 	name      string
+	rarityName string
 }
 
 type itemGenerator struct {
+}
+
+func (rs *ruleset) getWeightedRandomRule() *rule {
+	totalWeight := 0
+	for i := range rs.rules {
+		if rs.rules[i].ruleWeight == 0 {
+			rs.rules[i].ruleWeight = 1
+		}
+		totalWeight += rs.rules[i].ruleWeight
+	}
+	currWeight := rand.Intn(totalWeight)
+	for _, r := range rs.rules {
+		if r.ruleWeight > currWeight {
+			return r
+		} else {
+			currWeight -= r.ruleWeight
+		}
+	}
+	panic("Oh noes!")
 }
 
 func (ig *itemGenerator) createItemByRule(r *rule) *resultingItem {
@@ -56,6 +78,7 @@ func (ig *itemGenerator) createItemByRule(r *rule) *resultingItem {
 		modifiers: map[string]int{},
 		affixes:   []*affix{},
 		name:      (*r.possibleItemNames)[rand.Intn(len(*r.possibleItemNames))],
+		rarityName: r.rarityName,
 	}
 	for k, v := range r.modifiersNamesAndPossibleValues {
 		ri.modifiers[k] = 0 + v[rand.Intn(len(v))]
@@ -121,7 +144,7 @@ func (ri *resultingItem) generateAlias(r *rule) {
 	}
 }
 
-func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
+func (ri *resultingItem) getFullName(addStatsLine, forceAffixes, addRarityName bool) string {
 	name := ri.name
 	prefixes := ""
 	suffixes := ""
@@ -137,9 +160,12 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 		statsLine += k + " " + valString + ", "
 	}
 
-	startingAffixIndex := rand.Intn(len(ri.affixes))
+	startingAffixIndex := 0
+	if len(ri.affixes) > 0 {
+		startingAffixIndex = rand.Intn(len(ri.affixes))
+	}
 	for aliasIndex := range ri.affixes {
-		currAffix := ri.affixes[(aliasIndex + startingAffixIndex) % len(ri.affixes)]
+		currAffix := ri.affixes[(aliasIndex+startingAffixIndex)%len(ri.affixes)]
 		if currAffix.lines.selectOnlyOne {
 			prefixNotSuffix := rand.Intn(2) == 0
 			if prefixNotSuffix {
@@ -184,5 +210,8 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes bool) string {
 		name += "{" + statsLine + "}"
 	}
 	name = strings.Replace(name, ", }", "}", 1)
+	if addRarityName {
+		name += fmt.Sprintf(" (%s)", ri.rarityName)
+	}
 	return name
 }
