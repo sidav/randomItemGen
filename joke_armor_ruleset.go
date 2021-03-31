@@ -3,18 +3,10 @@ package main
 var (
 	armorRuleset = ruleset{
 		possibleNames: []string{
-			"бригантина",
-			"пара штанов",
-			"накидка",
-			"зимняя куртка",
-			"пара перчаток",
+			"бригантина", "пара штанов", "накидка", "зимняя куртка", "пара перчаток",
 			// дальше неадекватные
-			"бронежилетка",
-			"сисечная броня",
-			"пара трусов",
-			"пара носков",
-			"шляпка",
-			"пара берцев",
+			"бронежилетка", "сисечная броня", "пара трусов", "пара носков", "шляпка", "пара берцев", "майка-алкоголичка",
+			"обмотка как у мумии", "юбка", "фофудья", "резинка для волос", "пара очков", "шапочка", "ракушка",
 		},
 
 		possbleAffixes: []affix{
@@ -120,7 +112,7 @@ func initArmorRuleset() {
 	armorRuleset.rules = []*rule {
 		&rule{
 			rarityName:        "Common",
-			ruleWeight: 5,
+			ruleWeight: 3,
 			possibleItemNames: &armorRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,

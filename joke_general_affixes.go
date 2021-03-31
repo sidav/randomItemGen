@@ -11,18 +11,6 @@ var (
 		{
 			lines: &affixLines{
 				prefixForItemName: "",
-				suffixForItemName: "для жирных волос",
-			},
-		},
-		{
-			lines: &affixLines{
-				prefixForItemName: "",
-				suffixForItemName: "для ломких волос",
-			},
-		},
-		{
-			lines: &affixLines{
-				prefixForItemName: "",
 				suffixForItemName: "на гусеничном ходу",
 			},
 		},
@@ -250,7 +238,85 @@ var (
 		{
 			lines: &affixLines{
 				prefixForItemName: "",
+				suffixForItemName: "с шипами",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с торчащими гвоздями",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "ликантропии",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
 				suffixForItemName: "с функцией просмотра сериальчиков",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с функцией массажа",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "для повышения самооценки",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "для настоящих засранцев",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "для пришельцев",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с эффектом лоботомии",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с эффектом регенерации",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с лазерной гравировкой",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с установленным DOOM",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "саморазрушения",
+			},
+		},
+		{
+			lines: &affixLines{
+				prefixForItemName: "",
+				suffixForItemName: "с функцией заваривания чая",
 			},
 		},
 		{

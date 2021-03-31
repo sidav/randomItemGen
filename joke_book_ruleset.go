@@ -254,7 +254,7 @@ func initBookRuleset() {
 	bookRuleset.rules = []*rule{
 		&rule{
 			rarityName:        "Common",
-			ruleWeight:        5,
+			ruleWeight:        3,
 			possibleItemNames: &bookRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,

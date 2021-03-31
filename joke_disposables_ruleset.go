@@ -18,6 +18,18 @@ var (
 			},
 			{
 				lines: &affixLines{
+					prefixForItemName: "",
+					suffixForItemName: "для жирных волос",
+				},
+			},
+			{
+				lines: &affixLines{
+					prefixForItemName: "",
+					suffixForItemName: "для ломких волос",
+				},
+			},
+			{
+				lines: &affixLines{
 					prefixForItemName: "подозрительные",
 					suffixForItemName: "странной формы",
 					selectOnlyOne:     true,
@@ -431,7 +443,7 @@ func initDisposablesRuleset() {
 	disposablesRuleset.rules = []*rule{
 		&rule{
 			rarityName:        "Common",
-			ruleWeight:        5,
+			ruleWeight:        3,
 			possibleItemNames: &disposablesRuleset.possibleNames,
 			possibleAffixes:   nil,
 			totalAffixes:      0,
