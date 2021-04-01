@@ -71,7 +71,7 @@ var (
 				},
 				listOfEffects: []string{},
 				modifiers: map[string][]int{
-					"Защита":   {3, 6, 10, 15},
+					"Armor":   {3, 6, 10, 15},
 				},
 			},
 			// дальше неадекватные
@@ -82,7 +82,7 @@ var (
 				},
 				listOfEffects: []string{"защищает от радиации"},
 				modifiers: map[string][]int{
-					"Защита":   {-2, -1, 0, 1},
+					"Armor":   {-2, -1, 0, 1},
 				},
 			},
 			{
@@ -101,7 +101,7 @@ var (
 				},
 				listOfEffects: []string{"\"уёбищная, да и нитки вылезают\""},
 				modifiers: map[string][]int{
-					"Защита":   {-11, -14, -18},
+					"Armor":   {-11, -14, -18},
 				},
 			},
 		},
@@ -117,7 +117,7 @@ func initArmorRuleset() {
 			possibleAffixes:   nil,
 			totalAffixes:      0,
 			modifiersNamesAndPossibleValues: map[string][]int{
-				"Защита":   {-2, -1, 0, 0, 1, 2},
+				"Armor":   {-2, -1, 0, 0, 1, 2},
 			},
 		},
 		&rule{
@@ -127,7 +127,7 @@ func initArmorRuleset() {
 			possibleAffixes:   append(append(armorRuleset.possbleAffixes, generalAffixes...), generalAffixes...),
 			totalAffixes:      1,
 			modifiersNamesAndPossibleValues: map[string][]int{
-				"Защита":   {-2, -1, 0, 0, 1, 2, 3},
+				"Armor":   {-2, -1, 0, 0, 1, 2, 3},
 			},
 		},
 		&rule{
@@ -137,7 +137,7 @@ func initArmorRuleset() {
 			possibleAffixes:   append(armorRuleset.possbleAffixes, generalAffixes...),
 			totalAffixes:      2,
 			modifiersNamesAndPossibleValues: map[string][]int{
-				"Защита":   {-2, -1, -1, 0, 1, 1, 2, 3},
+				"Armor":   {-2, -1, -1, 0, 1, 1, 2, 3},
 			},
 		},
 		&rule{
@@ -149,7 +149,7 @@ func initArmorRuleset() {
 			possibleUniqueAffixes: append(armorRuleset.possibleUniqueAffixes, generalUniqueAffixes...),
 			totalUniqueAffixes:    1,
 			modifiersNamesAndPossibleValues: map[string][]int{
-				"Защита":   {-3, -2, -1, 0, 1, 2, 3, 4, 5},
+				"Armor":   {-3, -2, -1, 0, 1, 2, 3, 4, 5},
 			},
 		},
 		&rule{
@@ -161,11 +161,11 @@ func initArmorRuleset() {
 			possibleUniqueAffixes: append(armorRuleset.possibleUniqueAffixes, generalUniqueAffixes...),
 			totalUniqueAffixes:    2,
 			modifiersNamesAndPossibleValues: map[string][]int{
-				"Защита":   {-3, -2, -1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 5},
+				"Armor":   {-3, -2, -1, 0, 1, 1, 1, 2, 2, 3, 4, 5, 5},
 			},
-			aliasPreSyllables:  []string{"пре", "пере", "до", "недо", "блево", "броне", "тряп", "брен"},
+			aliasPreSyllables:  []string{"Стильная ", "Модная ", "Элитная ", "Брендовая ", "Модельная ", "Броне", "Тряп", "Брен"},
 			aliasSyllables:     []string{"ли", "ка", "ша", "шаш", "зюн", "бав", "брю", "хыыых"},
-			aliasPostSyllables: []string{"алка", "ень", "ый", "-кладенец"},
+			aliasPostSyllables: []string{"алка", "ень", "уп"},
 		},
 	}
 }

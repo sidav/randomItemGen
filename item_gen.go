@@ -145,6 +145,7 @@ func (ri *resultingItem) generateAlias(r *rule) {
 }
 
 func (ri *resultingItem) getFullName(addStatsLine, forceAffixes, addRarityName bool) string {
+	basicStats := []string{"Damage", "Accuracy", "Armor"}
 	name := ri.name
 	prefixes := ""
 	suffixes := ""
@@ -201,10 +202,33 @@ func (ri *resultingItem) getFullName(addStatsLine, forceAffixes, addRarityName b
 			}
 		}
 	}
+	basicStatsLine := ""
+	for _, s := range basicStats {
+		for k, val := range ri.modifiers {
+			if k == s {
+				valString := strconv.Itoa(val)
+				if !(val < 0) {
+					valString = "+" + valString
+				}
+				if basicStatsLine != "" {
+					basicStatsLine += ","
+				}
+				basicStatsLine += valString
+				break
+			}
+		}
+	}
+	if basicStatsLine != "" {
+		basicStatsLine += " "
+	}
+	aliasPrintable := ""
+	if len(ri.alias) > 0 {
+		aliasPrintable = " \""+ri.alias+"\""
+	}
 	if len(ri.alias) == 0 || forceAffixes {
-		name = fmt.Sprintf("%s%s %s", prefixes, name, suffixes)
+		name = fmt.Sprintf("%s%s%s%s %s", prefixes, basicStatsLine, name, aliasPrintable, suffixes)
 	} else {
-		name = fmt.Sprintf("%s \"%s\" ", ri.name, ri.alias)
+		name = fmt.Sprintf("%s%s \"%s\" ", basicStatsLine, ri.name, ri.alias)
 	}
 	if statsLine != "" && addStatsLine {
 		name += "{" + statsLine + "}"

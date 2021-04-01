@@ -290,9 +290,9 @@ func initBookRuleset() {
 			totalAffixes:          3,
 			possibleUniqueAffixes: append(bookRuleset.possibleUniqueAffixes, generalUniqueAffixes...),
 			totalUniqueAffixes:    2,
-			aliasPreSyllables:     []string{"Qu", "Li", "Non-"},
-			aliasSyllables:        []string{"kir", "qua", "li"},
-			aliasPostSyllables:    []string{"zum", "kem", "ral"},
+			aliasPreSyllables:     []string{"Читаем ", "Пишем ", "Учим ", "Смотрим "},
+			aliasSyllables:        []string{"лучшие ", "офигенные ", "унылые ", "разноцветные ", "непонятные "},
+			aliasPostSyllables:    []string{"истории", "комиксы", "загадки", "приключения", "формулы"},
 		},
 	}
 }
